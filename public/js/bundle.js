@@ -8502,6 +8502,8 @@ var _axios = _interopRequireDefault(require("axios"));
 
 var _alerts = require("./alerts");
 
+var _loginAndLogout = require("./loginAndLogout");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var updateSettings = function updateSettings(data, type) {
@@ -8523,29 +8525,44 @@ var updateSettings = function updateSettings(data, type) {
         case 4:
           res = _context.sent;
 
-          // console.log(res);
-          if (res.data.status === 'success') {
-            (0, _alerts.showAlert)('success', "".concat(type.toUpperCase(), " updated successfully!"));
+          if (!(res.data.status === 'success')) {
+            _context.next = 9;
+            break;
           }
 
-          _context.next = 11;
-          break;
+          _context.next = 8;
+          return regeneratorRuntime.awrap((0, _alerts.showAlert)('success', "".concat(type.toUpperCase(), " updated successfully!")));
 
         case 8:
-          _context.prev = 8;
+          if (type === 'password') {
+            window.setTimeout(function () {
+              (0, _loginAndLogout.logout)();
+            }, 2000);
+          } else {
+            window.setTimeout(function () {
+              location.reload();
+            }, 2000);
+          }
+
+        case 9:
+          _context.next = 14;
+          break;
+
+        case 11:
+          _context.prev = 11;
           _context.t0 = _context["catch"](0);
           (0, _alerts.showAlert)('error', _context.t0.response.data.message);
 
-        case 11:
+        case 14:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 8]]);
+  }, null, null, [[0, 11]]);
 };
 
 exports.updateSettings = updateSettings;
-},{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js"}],"stripe.js":[function(require,module,exports) {
+},{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js","./loginAndLogout":"loginAndLogout.js"}],"stripe.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8973,7 +8990,7 @@ if (userDataForm) userDataForm.addEventListener('submit', function (e) {
   (0, _updateSettings.updateSettings)(form, 'data');
 });
 if (userPasswordForm) userPasswordForm.addEventListener('submit', function _callee(e) {
-  var passwordCurrent, password, passwordConfirm;
+  var passwordCurrent, password, confirmPassword;
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
@@ -8982,12 +8999,12 @@ if (userPasswordForm) userPasswordForm.addEventListener('submit', function _call
           document.querySelector('.btn--save-password').textContent = 'Updating...';
           passwordCurrent = document.getElementById('password-current').value;
           password = document.getElementById('password').value;
-          passwordConfirm = document.getElementById('password-confirm').value;
+          confirmPassword = document.getElementById('password-confirm').value;
           _context.next = 7;
           return regeneratorRuntime.awrap((0, _updateSettings.updateSettings)({
             passwordCurrent: passwordCurrent,
             password: password,
-            passwordConfirm: passwordConfirm
+            confirmPassword: confirmPassword
           }, 'password'));
 
         case 7:

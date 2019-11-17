@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { showAlert } from './alerts';
+import { logout } from './loginAndLogout';
 
 export const updateSettings = async (data, type) => {
   try {
@@ -18,7 +19,16 @@ export const updateSettings = async (data, type) => {
     // console.log(res);
 
     if (res.data.status === 'success') {
-      showAlert('success', `${type.toUpperCase()} updated successfully!`);
+      await showAlert('success', `${type.toUpperCase()} updated successfully!`);
+      if (type === 'password') {
+        window.setTimeout(() => {
+          logout();
+        }, 2000);
+      } else {
+        window.setTimeout(() => {
+          location.reload();
+        }, 2000);
+      }
     }
   } catch (err) {
     showAlert('error', err.response.data.message);
