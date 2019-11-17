@@ -3,6 +3,8 @@ const viewController = require('./../controllers/viewController');
 const authController = require('./../controllers/authController');
 const bookingController = require('./../controllers/bookingController');
 
+router.get('/signup', viewController.getSignupForm);
+
 router.get(
   '/',
   bookingController.createBookingCheckout,
