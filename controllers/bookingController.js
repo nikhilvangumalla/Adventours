@@ -24,7 +24,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
         description: tour.summary,
         images: [`https://www.natours.dev/img/tours/${tour.imageCover}`],
         amount: tour.price * 100,
-        currency: 'usd',
+        currency: 'inr',
         quantity: 1
       }
     ]
@@ -34,12 +34,11 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     status: 'success',
     session
   });
-
-  next();
 });
 
 exports.createBookingCheckout = catchAsync(async (req, res, next) => {
-  const { tour, user, price } = req.params;
+  const { tour, user, price } = req.query;
+  // console.log('tour usr price', tour, user, price);
   if (!tour && !user && !price) return next();
   await Booking.create({ tour, user, price });
 
