@@ -112,7 +112,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     token = req.cookies.jwt;
     // console.log(token);
   }
-  console.log('token from protect', token);
+  // console.log('token from protect', token);
 
   if (!token) {
     return next(new ErrorHandling('You are not logged in please log in', 401));

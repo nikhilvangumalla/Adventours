@@ -20,5 +20,6 @@ router.get(
   authController.protect,
   viewController.getMyTours
 );
+router.get('/my-reviews', authController.protect, viewController.getMyReviews);
 
 module.exports = router;
