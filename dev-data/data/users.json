@@ -1,20 +1,20 @@
 [
   {
     "_id": "5c8a1d5b0190b214360dc057",
-    "name": "Jonas Schmedtmann",
+    "name": "Nikhil Vangumalla",
     "email": "admin@natours.io",
     "role": "admin",
     "active": true,
-    "photo": "user-1.jpg",
-    "password": "$2a$12$Q0grHjH9PXc6SxivC8m12.2mZJ9BbKcgFpwSG4Y1ZEII8HJVzWeyS"
+    "photo": "user-5c8a1d5b0190b214360dc057-1573975037765.jpeg",
+    "password": "$2a$12$z00jvKXYVWK/Z33s0jgyBOfkRO/6qslTpAzjJhMrn0fqbhWi5Zpgu"
   },
   {
     "_id": "5c8a1dfa2f8fb814b56fa181",
-    "name": "Lourdes Browning",
-    "email": "loulou@example.com",
+    "name": "Nikhil",
+    "email": "nikhil@example.com",
     "role": "user",
     "active": true,
-    "photo": "user-2.jpg",
+    "photo": "user-5c8a1dfa2f8fb814b56fa181-1574258274981.jpeg",
     "password": "$2a$12$hP1h2pnNp7wgyZNRwPsOTeZuNzWBv7vHmsR3DT/OaPSUBQT.y0S.."
   },
   {

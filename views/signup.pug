@@ -7,7 +7,7 @@ block content
       form.form.form--signup
         .form__group
           label.form__label(for='name') Name
-          input#name.form__input(type='name', placeholder='Adventours', required)
+          input#name.form__input(type='name', placeholder='Adventours(Accepts only characters)', required pattern='[A-Za-z]+')
         .form__group
           label.form__label(for='email') Email address
           input#email.form__input(type='email', placeholder='you@example.com', required)

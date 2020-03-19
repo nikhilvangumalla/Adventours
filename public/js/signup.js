@@ -18,7 +18,8 @@ export const signup = async (name, email, password, confirmPassword) => {
       showAlert('success', 'Signed up successfully');
       location.assign('/');
     }
-  } catch (error) {
-    showAlert('error', err.response);
+  } catch (err) {
+    showAlert('error', err.response.data.message);
+    // console.log(err.response);
   }
 };

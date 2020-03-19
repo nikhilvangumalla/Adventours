@@ -4,6 +4,7 @@ import { login, logout } from './loginAndLogout';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
 import { signup } from './signup';
+import { review } from './review';
 
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
@@ -13,6 +14,7 @@ const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const bookBtn = document.getElementById('book-tour');
+const reviewForm = document.querySelector('.form-review-data');
 
 // DELEGATION
 if (mapBox) {
@@ -81,4 +83,15 @@ if (bookBtn)
     e.target.textContent = 'Processing...';
     const { tourId } = e.target.dataset;
     bookTour(tourId);
+  });
+
+if (reviewForm)
+  reviewForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const star = parseInt(reviewForm.star.value);
+    const reviewtext = document.getElementById('review__textarea').value;
+    const tourId = document.getElementById('review-tour').value;
+    const userId = document.getElementById('review-user').value;
+    // console.log(star, review, tourId, userId);
+    review(reviewtext, star, tourId, userId);
   });
